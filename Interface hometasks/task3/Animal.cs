@@ -8,10 +8,7 @@ namespace Interface_hometasks.task3
 {
     public abstract class Animal
     {
-        public virtual void MakeSound()
-        {
-
-        }
+        public   abstract void MakeSound();
        
     }
 }

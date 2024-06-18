@@ -29,14 +29,18 @@ namespace Interface_hometasks.task4
 
         public void WithDraw(double amount)
         {
-            if(amount > 0)
+            if(amount <= 0)
             {
-                Balance -= amount;
-                Console.WriteLine($"Withdraw: {amount}. New balance: {Balance}");
+                Console.WriteLine("Please, enter your amount of money correctly.");
+            }
+            else if (amount>Balance)
+            {
+                Console.WriteLine("You can not withdraw, amount of money is more than your balance.");
             }
             else
             {
-                Console.WriteLine("Your entered amount must be postive integer.");
+                Balance-=amount;
+                Console.WriteLine($"Withdraw{amount}. New Balance{Balance}");
             }
         }
     }

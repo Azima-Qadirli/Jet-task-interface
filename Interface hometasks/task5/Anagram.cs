@@ -29,13 +29,14 @@ namespace Interface_hometasks.task5
         }
          static bool AreAnagrams(string first, string second)
         {
-            
-            char[] char1 = first.ToCharArray();
-            char[] char2 = second.ToCharArray();
+            string First = first.ToLower();
+            string Second = second.ToLower();
+
+            char[] char1 = First.ToCharArray();
+            char[] char2 = Second.ToCharArray();
             Array.Sort(char1);
             Array.Sort(char2);
             return new string(char1) == new string(char2);
-
 
         }
     }

@@ -30,12 +30,28 @@ namespace Interface_hometasks.task6
         }
         static long Power(int first, int second)
         {
-            long result = 1;
-            for (int i = 0; i < second; i++)
+            if (second == 0)
             {
-                result *= first;
+                return 1;
             }
-            return result;
+            else if(second > 1) 
+            {
+                long result = 1;
+                for (int i = 0; i < second; i++)
+                {
+                    result *= first;
+                }
+                return result;
+            }
+            else //Here now we will check exponent for negative integers
+            {
+                long power = 1;
+                for(int i = 0; i < -second; i++)
+                {
+                    power *= first;
+                }
+                return 1 / first;
+            }
         }
 
     }
