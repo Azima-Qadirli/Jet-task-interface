@@ -5,10 +5,9 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
-
+//Task 2 : Write a method that takes two integers, base and exponent, and returns the result of raising the base to the power of the exponent.(without any Math method)
 namespace Interface_hometasks.task6
 {
-    //Task 2 : Write a method that takes two integers, base and exponent, and returns the result of raising the base to the power of the exponent.(without any Math method)
     public class Program
     {
         static void Main(string[] args)
@@ -17,22 +16,27 @@ namespace Interface_hometasks.task6
             int first = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Enter your second number as exponent:");
-            int second = int.Parse(Console.ReadLine()); 
+            int second = int.Parse(Console.ReadLine());
 
-            long result = Power(first,second);
-            Console.WriteLine($"Result: {result}");
-        }
-        static long Power(int first , int second)
-        {
-            if (second<0)
+            if (second < 0)
             {
-                Console.WriteLine("Sorry, you have to enter positive integer for exponent:");
+                Console.WriteLine("Sorry,You entered negative integer for exponent.");
             }
+            else
+            {
+                long result = Power(first, second);
+                Console.WriteLine($"Result: {result}");
+            }
+        }
+        static long Power(int first, int second)
+        {
             long result = 1;
-            result *= second;
-
+            for (int i = 0; i < second; i++)
+            {
+                result *= first;
+            }
             return result;
         }
-        
+
     }
 }

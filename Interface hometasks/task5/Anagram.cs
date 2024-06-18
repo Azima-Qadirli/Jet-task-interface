@@ -41,4 +41,3 @@ namespace Interface_hometasks.task5
     }
     
 }
-//Console-da hech ne gorsenmir.

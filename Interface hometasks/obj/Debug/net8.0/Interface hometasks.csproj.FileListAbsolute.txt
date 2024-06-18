@@ -12,3 +12,4 @@ C:\Users\test\OneDrive\Desktop\Interface hometasks\Interface hometasks\obj\Debug
 C:\Users\test\OneDrive\Desktop\Interface hometasks\Interface hometasks\obj\Debug\net8.0\Interface hometasks.pdb
 C:\Users\test\OneDrive\Desktop\Interface hometasks\Interface hometasks\obj\Debug\net8.0\Interface hometasks.genruntimeconfig.cache
 C:\Users\test\OneDrive\Desktop\Interface hometasks\Interface hometasks\obj\Debug\net8.0\ref\Interface hometasks.dll
+C:\Users\test\OneDrive\Desktop\Interface hometasks\Interface hometasks\obj\Debug\net8.0\Interface hometasks.sourcelink.json
