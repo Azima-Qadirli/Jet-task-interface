@@ -57,3 +57,149 @@ static void Main(string[] args)
 
 
 }
+
+
+using System;
+using System.Collections.Generic;
+
+namespace Bank_Account_Management
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, BankAccount> accounts = new Dictionary<string, BankAccount>();
+            bool exit = false;
+
+            while (!exit)
+            {
+                ShowMenu();
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        OpenAccount(accounts);
+                        break;
+                    case "2":
+                        InvestMoney(accounts);
+                        break;
+                    case "3":
+                        WithdrawMoney(accounts);
+                        break;
+                    case "4":
+                        ShowBalance(accounts);
+                        break;
+                    case "5":
+                        ShowAccountActivity(accounts);
+                        break;
+                    case "6":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
+                        break;
+                }
+            }
+        }
+
+        private static void ShowMenu()
+        {
+            Console.WriteLine("1. Open an account");
+            Console.WriteLine("2. Invest money");
+            Console.WriteLine("3. Withdraw money");
+            Console.WriteLine("4. Show balance");
+            Console.WriteLine("5. Show account activity");
+            Console.WriteLine("6. Exit");
+            Console.Write("Please select an option: ");
+        }
+
+        private static void OpenAccount(Dictionary<string, BankAccount> accounts)
+        {
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
+            Console.Write("Enter owner name: ");
+            string ownerName = Console.ReadLine();
+
+            if (accounts.ContainsKey(accountNumber))
+            {
+                Console.WriteLine("Account already exists.");
+            }
+            else
+            {
+                BankAccount newAccount = new BankAccount(ownerName, accountNumber);
+                accounts.Add(accountNumber, newAccount);
+                Console.WriteLine("Account created successfully.");
+            }
+        }
+
+        private static void InvestMoney(Dictionary<string, BankAccount> accounts)
+        {
+            BankAccount account = GetAccount(accounts);
+            if (account != null)
+            {
+                Console.Write("Enter amount to invest: ");
+                if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+                {
+                    account.Deposit(amount);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid amount.");
+                }
+            }
+        }
+
+        private static void WithdrawMoney(Dictionary<string, BankAccount> accounts)
+        {
+            BankAccount account = GetAccount(accounts);
+            if (account != null)
+            {
+                Console.Write("Enter amount to withdraw: ");
+                if (decimal.TryParse(Console.ReadLine(), out decimal amount) && amount > 0)
+                {
+                    account.Withdraw(amount);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid amount.");
+                }
+            }
+        }
+
+        private static void ShowBalance(Dictionary<string, BankAccount> accounts)
+        {
+            BankAccount account = GetAccount(accounts);
+            if (account != null)
+            {
+                Console.WriteLine($"Balance: {account.Balance:C}");
+            }
+        }
+
+        private static void ShowAccountActivity(Dictionary<string, BankAccount> accounts)
+        {
+            BankAccount account = GetAccount(accounts);
+            if (account != null)
+            {
+                // In this implementation, we don't have a specific activity log to show.
+                // The activity log feature would need to be implemented in the BankAccount class.
+                Console.WriteLine($"Owner: {account.OwnerName}, Account Number: {account.Number}, Balance: {account.Balance:C}");
+            }
+        }
+
+        private static BankAccount GetAccount(Dictionary<string, BankAccount> accounts)
+        {
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
+            if (accounts.TryGetValue(accountNumber, out BankAccount account))
+            {
+                return account;
+            }
+            else
+            {
+                Console.WriteLine("Account not found.");
+                return null;
+            }
+        }
+    }
+}
